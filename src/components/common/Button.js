@@ -1,3 +1,4 @@
+import './Button.css';
 
 export const buttonTypes = {
     "primary": "primary",
@@ -6,9 +7,8 @@ export const buttonTypes = {
 
 const Button = (props) => {
     return (
-        <div>
+        <div className={`button ${props.type === buttonTypes.primary ? 'primary' : 'secondary'}`}>
             {props.name}
-            {props.type}
         </div>
     )
 }

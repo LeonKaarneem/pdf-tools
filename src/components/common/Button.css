@@ -1,0 +1,26 @@
+.button {
+    min-width: fit-content;
+    height: 38px;
+    white-space: nowrap;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.primary {
+    background: #2A59FE;
+    color: #FFFFFF;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 22px;
+}
+
+.primary:hover {
+    background: #2A59FECC
+}
+
+.primary:active {
+    background: #2A59FE99;
+}

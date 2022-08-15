@@ -1,5 +1,7 @@
 .pdf-tools-body {
     display: flex;
+    height: 100%;
+    width: 100%;
 }
 
 .pdf-tools-body .buttons-container {

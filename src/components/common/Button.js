@@ -17,10 +17,14 @@ const Button = (props) => {
         }
     }
 
+    const handleFileSelect = (event) => {
+        props.onClick(event);
+    }
+
     return (
         <div onClick={handleClick} className={`button ${props.buttonType === buttonTypes.primary ? 'primary' : 'secondary'}`}>
             {props.name}
-            <input type="file" ref={inputRef} />
+            <input onChange={handleFileSelect} type="file" ref={inputRef} />
         </div>
     )
 }

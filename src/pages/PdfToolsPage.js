@@ -5,19 +5,19 @@ import {useState} from "react";
 const PdfToolsPage = () => {
     const [pdf, setPdf] = useState(undefined);
 
-    const doSomething = () => {
+    const createNewPDF = () => {
         console.log("doing somthin");
     }
 
-    const doSomethingS = () => {
-        console.log("doing somthin2");
+    const uploadExistingPDF = (event) => {
+        console.log("doing somthin2", event);
     }
 
     return (
         <div className="pdf-tools-body">
             <div className="buttons-container">
-                <Button onClick={doSomethingS} name="Create new PDF" buttonType={buttonTypes.primary}/>
-                <Button onClick={doSomething} name="Upload existing PDF" inputType="file" buttonType={buttonTypes.primary}/>
+                <Button onClick={createNewPDF} name="Create new PDF" buttonType={buttonTypes.primary}/>
+                <Button onClick={uploadExistingPDF} name="Upload existing PDF" inputType="file" buttonType={buttonTypes.primary}/>
             </div>
             {pdf
                 &&

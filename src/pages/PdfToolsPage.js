@@ -35,8 +35,8 @@ const PdfToolsPage = () => {
         for (let i = 0; i < rawLength; i++) {
             array[i] = raw.charCodeAt(i);
         }
-        console.log(array)
-
+        setPdf(base64)
+        console.log(raw);
     }
 
     return (
@@ -48,7 +48,7 @@ const PdfToolsPage = () => {
             {pdf
                 &&
                 <div className="pdf-container">
-                    content xd
+                    <iframe title="pdf" width="100%" height="100%" src={`data:application/pdf;base64,${pdf}`} />
                 </div>
             }
 

@@ -1,0 +1,16 @@
+.pdf-tools-body {
+    display: flex;
+}
+
+.pdf-tools-body .buttons-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    min-width: 200px;
+}
+
+.pdf-container {
+    width: 300px;
+    height: 300px;
+    background: #d5d5d5;
+}

@@ -9,6 +9,10 @@
     cursor: pointer;
 }
 
+.button input {
+    display: none;
+}
+
 .primary {
     background: #2A59FE;
     color: #FFFFFF;

@@ -1,4 +1,5 @@
 import './Button.css';
+import {useRef} from "react";
 
 export const buttonTypes = {
     "primary": "primary",
@@ -6,9 +7,20 @@ export const buttonTypes = {
 }
 
 const Button = (props) => {
+    const inputRef = useRef(null);
+
+    const handleClick = () => {
+        if (props.inputType === "file") {
+            inputRef.current.click()
+        } else {
+            props.onClick();
+        }
+    }
+
     return (
-        <div className={`button ${props.type === buttonTypes.primary ? 'primary' : 'secondary'}`}>
+        <div onClick={handleClick} className={`button ${props.buttonType === buttonTypes.primary ? 'primary' : 'secondary'}`}>
             {props.name}
+            <input type="file" ref={inputRef} />
         </div>
     )
 }

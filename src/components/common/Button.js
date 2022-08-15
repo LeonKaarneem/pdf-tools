@@ -24,7 +24,7 @@ const Button = (props) => {
     return (
         <div onClick={handleClick} className={`button ${props.buttonType === buttonTypes.primary ? 'primary' : 'secondary'}`}>
             {props.name}
-            <input onChange={handleFileSelect} type="file" ref={inputRef} />
+            <input accept="application/pdf" onChange={handleFileSelect} type="file" ref={inputRef} />
         </div>
     )
 }

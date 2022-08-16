@@ -6,12 +6,10 @@ const PdfToolsPage = () => {
     const [pdf, setPdf] = useState(undefined);
 
     const createNewPDF = () => {
-        console.log("doing somthin");
+        console.log("Create new PDF");
     }
 
     const uploadExistingPDF = (event) => {
-        console.log("doing somthin2", event);
-        console.log("file", event.target.files[0]);
         extractPdfBase64(event.target.files[0])
     }
 
@@ -36,7 +34,7 @@ const PdfToolsPage = () => {
             array[i] = raw.charCodeAt(i);
         }
         setPdf(base64)
-        console.log(raw);
+        // Find an alternative solution for iFrame
     }
 
     return (

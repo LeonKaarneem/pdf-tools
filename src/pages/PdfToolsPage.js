@@ -46,7 +46,7 @@ const PdfToolsPage = () => {
             {pdf
                 &&
                 <div className="pdf-container">
-                    <iframe title="pdf" width="99%" height="99%" src={`data:application/pdf;base64,${pdf}`} />
+                    PDF HERE
                 </div>
             }
 

@@ -1,6 +1,7 @@
 import Button, {buttonTypes} from "../components/common/Button";
 import './PdfToolsPage.css';
 import {useState} from "react";
+import {Document, Page} from "react-pdf";
 
 const PdfToolsPage = () => {
     const [pdf, setPdf] = useState(undefined);
@@ -10,31 +11,17 @@ const PdfToolsPage = () => {
     }
 
     const uploadExistingPDF = (event) => {
-        extractPdfBase64(event.target.files[0])
-    }
-
-    const extractPdfBase64 = (file) => {
-        const fileReader = new FileReader();
-        fileReader.readAsDataURL(file)
-
-        fileReader.onloadend = function (event) {
-            convertDataURIToBinary(event.target.result)
+        console.log(event.target.files)
+        if (event.target.files.length > 1) {
+            console.log("more than 1 file selected")
         }
-    }
-
-    function convertDataURIToBinary(dataURI) {
-
-        const base64Index = dataURI.indexOf(';base64,') + ';base64,'.length;
-        const base64 = dataURI.substring(base64Index);
-        const raw = window.atob(base64);
-        const rawLength = raw.length;
-        const array = new Uint8Array(new ArrayBuffer(rawLength));
-
-        for (let i = 0; i < rawLength; i++) {
-            array[i] = raw.charCodeAt(i);
+        if (event.target.files.length < 1) {
+            console.log("no file selected")
         }
-        setPdf(base64)
-        // Find an alternative solution for iFrame
+        if (event.target.files[0].type !== "application/pdf") {
+            console.log("pdf wasn't selected")
+        }
+        setPdf(event.target.files[0])
     }
 
     return (
@@ -46,7 +33,9 @@ const PdfToolsPage = () => {
             {pdf
                 &&
                 <div className="pdf-container">
-                    PDF HERE
+                    <Document file={pdf} options={{workerSrc: "pdf.worker.js"}}>
+                        <Page pageNumber={1}/>
+                    </Document>
                 </div>
             }
 

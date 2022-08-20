@@ -5,13 +5,17 @@ import {Document, Page} from "react-pdf";
 
 const PdfToolsPage = () => {
     const [pdf, setPdf] = useState(undefined);
+    const [pdfData, setPdfData] = useState({currentPage: 1, totalPages: 1});
 
     const createNewPDF = () => {
         console.log("Create new PDF");
     }
 
+    const successfullyUploadedPDF = ({ numPages }) => {
+        setPdfData({currentPage: 1, totalPages: numPages})
+    }
+
     const uploadExistingPDF = (event) => {
-        console.log(event.target.files)
         if (event.target.files.length > 1) {
             console.log("more than 1 file selected")
         }
@@ -33,8 +37,8 @@ const PdfToolsPage = () => {
             {pdf
                 &&
                 <div className="pdf-container">
-                    <Document file={pdf} options={{workerSrc: "pdf.worker.js"}}>
-                        <Page pageNumber={1}/>
+                    <Document file={pdf} options={{workerSrc: "pdf.worker.js"}} onLoadSuccess={successfullyUploadedPDF}>
+                        <Page pageNumber={pdfData.currentPage}/>
                     </Document>
                 </div>
             }

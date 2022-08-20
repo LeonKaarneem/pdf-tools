@@ -17,13 +17,16 @@ const PdfToolsPage = () => {
 
     const uploadExistingPDF = (event) => {
         if (event.target.files.length > 1) {
-            console.log("more than 1 file selected")
+            // more than 1 file selected
+            return
         }
         if (event.target.files.length < 1) {
-            console.log("no file selected")
+            // no file selected
+            return
         }
         if (event.target.files[0].type !== "application/pdf") {
-            console.log("pdf wasn't selected")
+            // pdf wasn't selected
+            return
         }
         setPdf(event.target.files[0])
     }

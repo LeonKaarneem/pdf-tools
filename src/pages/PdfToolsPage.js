@@ -2,6 +2,7 @@ import Button, {buttonTypes} from "../components/common/Button";
 import './PdfToolsPage.css';
 import {useState} from "react";
 import {Document, Page} from "react-pdf";
+import Pagination from "../components/common/Pagination";
 
 const PdfToolsPage = () => {
     const [pdf, setPdf] = useState(undefined);
@@ -43,6 +44,7 @@ const PdfToolsPage = () => {
                     <Document file={pdf} options={{workerSrc: "pdf.worker.js"}} onLoadSuccess={successfullyUploadedPDF}>
                         <Page pageNumber={pdfData.currentPage}/>
                     </Document>
+                    <Pagination currentPage={pdfData.currentPage} totalPages={pdfData.totalPages} />
                 </div>
             }
 

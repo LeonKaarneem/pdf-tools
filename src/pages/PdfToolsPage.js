@@ -44,7 +44,7 @@ const PdfToolsPage = () => {
                     <Document file={pdf} options={{workerSrc: "pdf.worker.js"}} onLoadSuccess={successfullyUploadedPDF}>
                         <Page pageNumber={pdfData.currentPage}/>
                     </Document>
-                    <Pagination currentPage={pdfData.currentPage} totalPages={pdfData.totalPages} />
+                    <Pagination currentPage={pdfData.currentPage} totalPages={pdfData.totalPages} incrementPage={() => setPdfData((previousState) => ({...previousState, currentPage: previousState.currentPage++}))} />
                 </div>
             }
 

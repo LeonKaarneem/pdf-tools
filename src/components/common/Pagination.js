@@ -1,7 +1,9 @@
+import './Pagination.css';
+
 const Pagination = ({currentPage, totalPages, incrementPage, decrementPage}) => {
 
     return (
-        <div>
+        <div className={"pagination-container"}>
             {currentPage}
 
             <div onClick={decrementPage}>backward</div>

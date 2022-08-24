@@ -3,3 +3,23 @@
     flex-wrap: nowrap;
     gap: 8px;
 }
+
+.change-page-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.pagination-container .current-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 24px;
+    min-width: 24px;
+    font-size: 14px;
+    color: #2A59FE;
+    border-radius: 6px;
+    background: white;
+    box-shadow: 0 0 10px rgba(162, 170, 180, 0.25);
+}

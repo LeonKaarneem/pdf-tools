@@ -15,7 +15,7 @@ const Pagination = ({currentPage, totalPages, incrementPage, decrementPage}) => 
             <div>
                 ...
             </div>
-            <div>
+            <div onClick={}>
                 {totalPages}
             </div>
             <div onClick={incrementPage} className={"change-page-button"}>

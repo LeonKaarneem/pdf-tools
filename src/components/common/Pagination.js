@@ -1,6 +1,6 @@
 import './Pagination.css';
 
-const Pagination = ({currentPage, totalPages, incrementPage, decrementPage}) => {
+const Pagination = ({currentPage, totalPages, incrementPage, decrementPage, lastPage}) => {
 
     return (
         <div className={"pagination-container"}>
@@ -15,7 +15,7 @@ const Pagination = ({currentPage, totalPages, incrementPage, decrementPage}) => 
             <div>
                 ...
             </div>
-            <div onClick={}>
+            <div onClick={lastPage}>
                 {totalPages}
             </div>
             <div onClick={incrementPage} className={"change-page-button"}>

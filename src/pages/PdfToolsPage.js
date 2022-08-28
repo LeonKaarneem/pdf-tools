@@ -1,19 +1,21 @@
 import Button, {buttonTypes} from "../components/common/Button";
 import './PdfToolsPage.css';
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {Document, Page} from "react-pdf";
 import Pagination from "../components/common/Pagination";
 
 const PdfToolsPage = () => {
     const [pdf, setPdf] = useState(undefined);
-    const [pdfData, setPdfData] = useState({currentPage: 1, totalPages: 1});
+    const [currentPage, setCurrentPage] = useState(1);
+    const [totalPages, setTotalPages] = useState(1)
 
     const createNewPDF = () => {
         console.log("Create new PDF");
     }
 
-    const successfullyUploadedPDF = ({ numPages }) => {
-        setPdfData({currentPage: 1, totalPages: numPages})
+    const successfullyUploadedPDF = ({numPages}) => {
+        setCurrentPage(1)
+        setTotalPages(numPages)
     }
 
     const uploadExistingPDF = (event) => {
@@ -32,23 +34,38 @@ const PdfToolsPage = () => {
         setPdf(event.target.files[0])
     }
 
+    function incrementPage() {
+        const nextPage = currentPage + 1;
+        setCurrentPage(nextPage)
+    }
+
+    function decrementPage() {
+        const previousPage = currentPage - 1;
+        setCurrentPage(previousPage)
+    }
+
+    useEffect(() => {
+
+    }, [])
+
     return (
         <div className="pdf-tools-body">
             <div className="buttons-container">
                 <Button onClick={createNewPDF} name="Create new PDF" buttonType={buttonTypes.primary}/>
-                <Button onClick={uploadExistingPDF} name="Upload existing PDF" inputType="file" buttonType={buttonTypes.primary}/>
+                <Button onClick={uploadExistingPDF} name="Upload existing PDF" inputType="file"
+                        buttonType={buttonTypes.primary}/>
             </div>
             {pdf
                 &&
                 <div className="pdf-container">
                     <Document file={pdf} options={{workerSrc: "pdf.worker.js"}} onLoadSuccess={successfullyUploadedPDF}>
-                        <Page pageNumber={pdfData.currentPage}/>
+                        <Page pageNumber={currentPage}/>
                     </Document>
                     <Pagination
-                        currentPage={pdfData.currentPage}
-                        totalPages={pdfData.totalPages}
-                        decrementPage={() => setPdfData((previousState) => ({...previousState, currentPage: previousState.currentPage--}))}
-                        incrementPage={() => setPdfData((previousState) => ({...previousState, currentPage: previousState.currentPage++}))} />
+                        currentPage={currentPage}
+                        totalPages={totalPages}
+                        decrementPage={decrementPage}
+                        incrementPage={incrementPage}/>
                 </div>
             }
 

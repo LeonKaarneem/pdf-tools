@@ -1,5 +1,24 @@
 import './Pagination.css';
 
+const PaginationStart = ({amountOfPagesToShow, currentPage}) => {
+    const pagesToShow = [];
+    switch (currentPage) {
+        case 1:
+            for (let i = 2; i < amountOfPagesToShow + 1; i++) {
+                pagesToShow.push(i);
+            }
+    }
+    console.log(pagesToShow)
+
+
+    // const array = [...Array(amountOfPagesToShow)].map((value, index) => console.log(index))
+    // console.log(array)
+    return pagesToShow.map((pageNumber) => <div>{pageNumber}</div>)
+}
+
+
+
+
 const Pagination = ({currentPage, totalPages, incrementPage, decrementPage, lastPage}) => {
 
     return (
@@ -11,6 +30,7 @@ const Pagination = ({currentPage, totalPages, incrementPage, decrementPage, last
                     <path fillRule="evenodd" clipRule="evenodd" d="M11.0821 2.80787C11.3246 3.08496 11.2965 3.50614 11.0194 3.74859L6.25946 7.91354L11.0194 12.0785C11.2965 12.3209 11.3246 12.7421 11.0821 13.0192C10.8397 13.2963 10.4185 13.3244 10.1414 13.0819L5.09475 8.66612C4.63943 8.26771 4.63943 7.55938 5.09475 7.16097L10.1414 2.74516C10.4185 2.5027 10.8397 2.53078 11.0821 2.80787Z" fill="white" fillOpacity="0.5"/>
                 </svg>
             </div>
+            <PaginationStart amountOfPagesToShow={5} currentPage={currentPage} />
             <div className={"current-page"}>{currentPage}</div>
             <div>
                 ...

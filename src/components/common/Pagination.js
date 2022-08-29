@@ -7,6 +7,13 @@ const PaginationStart = ({amountOfPagesToShow, currentPage}) => {
             for (let i = 2; i < amountOfPagesToShow + 1; i++) {
                 pagesToShow.push(i);
             }
+            break;
+        default:
+            for (let i = 1; i < amountOfPagesToShow + 1; i++) {
+                if (i !== currentPage) {
+                    pagesToShow.push(i)
+                }
+            }
     }
     console.log(pagesToShow)
 

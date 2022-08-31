@@ -44,8 +44,8 @@ const PdfToolsPage = () => {
         setCurrentPage(previousPage)
     }
 
-    function lastPage() {
-        setCurrentPage(totalPages)
+    function goToPage(pageNumber) {
+        setCurrentPage(pageNumber)
     }
 
     useEffect(() => {
@@ -68,7 +68,7 @@ const PdfToolsPage = () => {
                     <Pagination
                         currentPage={currentPage}
                         totalPages={totalPages}
-                        lastPage={lastPage}
+                        goToPage={goToPage}
                         decrementPage={decrementPage}
                         incrementPage={incrementPage}/>
                 </div>

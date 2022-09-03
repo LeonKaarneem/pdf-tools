@@ -1,26 +1,22 @@
 import './Pagination.css';
 
 const PaginationStart = ({amountOfPagesToShow, currentPage, goToPage}) => {
+    console.log(amountOfPagesToShow, currentPage)
+    const pageSplit = amountOfPagesToShow / 2;
     const pagesToShow = [];
-    switch (currentPage) {
-        case 1:
-            for (let i = 2; i < amountOfPagesToShow + 1; i++) {
-                pagesToShow.push(i);
-            }
-            break;
-        default:
-            for (let i = 1; i < amountOfPagesToShow + 1; i++) {
-                if (i !== currentPage) {
-                    pagesToShow.push(i)
-                }
-            }
+    if (currentPage >= pageSplit) {
+        console.log("bigger or same", pageSplit)
+        let counter = 0;
+        for (let i = 0; i < Math.floor(pageSplit); i++) {
+            const pageNumber = currentPage - Math.floor(pageSplit) + counter;
+            pagesToShow.push(<div key={i} onClick={() => goToPage(pageNumber)}>{pageNumber}</div>);
+            counter++;
+        }
     }
-    console.log(pagesToShow)
-
-
     // const array = [...Array(amountOfPagesToShow)].map((value, index) => console.log(index))
     // console.log(array)
-    return pagesToShow.map((pageNumber) => <div onClick={() => goToPage(pageNumber)}>{pageNumber}</div>)
+    console.log(pagesToShow);
+    return pagesToShow.map((pageNumber) => pageNumber)
 }
 
 

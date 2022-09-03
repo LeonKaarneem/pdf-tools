@@ -6,11 +6,14 @@ const PaginationStart = ({amountOfPagesToShow, currentPage, goToPage}) => {
     const pagesToShow = [];
     if (currentPage >= pageSplit) {
         console.log("bigger or same", pageSplit)
-        let counter = 0;
         for (let i = 0; i < Math.floor(pageSplit); i++) {
-            const pageNumber = currentPage - Math.floor(pageSplit) + counter;
-            pagesToShow.push(<div key={i} onClick={() => goToPage(pageNumber)}>{pageNumber}</div>);
-            counter++;
+            const pageNumber = currentPage - Math.floor(pageSplit) + i;
+            pagesToShow.push(<div key={i + '-previous'} onClick={() => goToPage(pageNumber)}>{pageNumber}</div>);
+        }
+        pagesToShow.push(<div className={"current-page"}>{currentPage}</div>);
+        for (let i = 0; i < Math.floor(pageSplit); i++) {
+            const pageNumber = currentPage + i + 1;
+            pagesToShow.push(<div key={i + '-next'} onClick={() => goToPage(pageNumber)}>{pageNumber}</div>);
         }
     }
     // const array = [...Array(amountOfPagesToShow)].map((value, index) => console.log(index))
@@ -34,7 +37,6 @@ const Pagination = ({currentPage, totalPages, incrementPage, decrementPage, goTo
                 </svg>
             </div>
             <PaginationStart amountOfPagesToShow={5} currentPage={currentPage} goToPage={goToPage} />
-            <div className={"current-page"}>{currentPage}</div>
             <div>
                 ...
             </div>

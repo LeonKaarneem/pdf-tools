@@ -8,13 +8,9 @@ const PaginationStart = ({amountOfPagesToShow, currentPage, goToPage, totalPages
     let showNumbersAfter = Math.floor(pageSplit)
 
     if (currentPage <= Math.floor(pageSplit)) {
-        // showNumbersBefore = amountOfPagesToShow - currentPage;
         showNumbersAfter = amountOfPagesToShow - currentPage;
     } else if (currentPage >= totalPages - Math.floor(pageSplit)) {
-        console.log("at the end!!")
         const numbersBefore = totalPages - currentPage;
-        console.log("before pages:", numbersBefore)
-        // showNumbersBefore = showNumbersBefore + numbersBefore;
         showNumbersBefore = amountOfPagesToShow - numbersBefore - 1;
         showNumbersAfter = totalPages - currentPage;
     }
@@ -32,8 +28,6 @@ const PaginationStart = ({amountOfPagesToShow, currentPage, goToPage, totalPages
         pagesToShow.push(<div key={i + '-next'} className={'page-number'} onClick={() => goToPage(pageNumber)}>{pageNumber}</div>);
     }
 
-
-    console.log(pagesToShow);
     return pagesToShow.map((pageNumber) => pageNumber)
 }
 

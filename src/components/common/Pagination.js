@@ -50,13 +50,16 @@ const Pagination = ({currentPage, totalPages, incrementPage, decrementPage, goTo
                 </svg>
             </div>
             {Math.floor(amountOfPagesToShow / 2) + 1 < currentPage &&
-                <div onClick={() => goToPage(1)}>
+                <div className={"pagination-container"}>
+                <div className={'page-number'} onClick={() => goToPage(1)}>
                     1
                 </div>
-            }
-            <div>
+                <div>
                 ...
-            </div>
+                </div>
+                </div>
+            }
+
             <PaginationStart amountOfPagesToShow={amountOfPagesToShow} currentPage={currentPage} goToPage={goToPage} totalPages={totalPages}/>
             <div>
                 ...

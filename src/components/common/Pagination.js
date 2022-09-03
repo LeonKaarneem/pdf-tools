@@ -15,7 +15,7 @@ const PaginationStart = ({amountOfPagesToShow, currentPage, goToPage, totalPages
         const numbersBefore = totalPages - currentPage;
         console.log("before pages:", numbersBefore)
         // showNumbersBefore = showNumbersBefore + numbersBefore;
-        showNumbersBefore = amountOfPagesToShow - numbersBefore;
+        showNumbersBefore = amountOfPagesToShow - numbersBefore - 1;
         showNumbersAfter = totalPages - currentPage;
     }
 

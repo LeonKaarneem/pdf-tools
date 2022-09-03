@@ -68,6 +68,7 @@ const PdfToolsPage = () => {
                     <Pagination
                         currentPage={currentPage}
                         totalPages={totalPages}
+                        amountOfPagesToShow={5}
                         goToPage={goToPage}
                         decrementPage={decrementPage}
                         incrementPage={incrementPage}/>

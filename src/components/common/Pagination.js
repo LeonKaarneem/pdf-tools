@@ -32,7 +32,7 @@ const PaginationStart = ({amountOfPagesToShow, currentPage, goToPage, totalPages
 }
 
 
-const Pagination = ({currentPage, totalPages, incrementPage, decrementPage, goToPage}) => {
+const Pagination = ({currentPage, totalPages, incrementPage, decrementPage, goToPage, amountOfPagesToShow}) => {
 
     return (
         <div className={"pagination-container"}>
@@ -49,7 +49,15 @@ const Pagination = ({currentPage, totalPages, incrementPage, decrementPage, goTo
                           fill="white" fillOpacity="0.5"/>
                 </svg>
             </div>
-            <PaginationStart amountOfPagesToShow={5} currentPage={currentPage} goToPage={goToPage} totalPages={totalPages}/>
+            {Math.floor(amountOfPagesToShow / 2) + 1 < currentPage &&
+                <div onClick={() => goToPage(1)}>
+                    1
+                </div>
+            }
+            <div>
+                ...
+            </div>
+            <PaginationStart amountOfPagesToShow={amountOfPagesToShow} currentPage={currentPage} goToPage={goToPage} totalPages={totalPages}/>
             <div>
                 ...
             </div>

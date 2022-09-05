@@ -64,14 +64,16 @@ const Pagination = ({currentPage, totalPages, incrementPage, decrementPage, goTo
             <PaginationStart amountOfPagesToShow={amountOfPagesToShow} currentPage={currentPage} goToPage={goToPage}
                              totalPages={totalPages}/>
             {
-
+                Math.floor(amountOfPagesToShow / 2) + currentPage + 1 <= totalPages &&
+                <div className={"pagination-container"}>
+                    <div>
+                        ...
+                    </div>
+                    <div className={'page-number'} onClick={() => goToPage(totalPages)}>
+                        {totalPages}
+                    </div>
+                </div>
             }
-            <div>
-                ...
-            </div>
-            <div className={'page-number'} onClick={() => goToPage(totalPages)}>
-                {totalPages}
-            </div>
             <div onClick={incrementPage} className={"change-page-button"}>
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path fillRule="evenodd" clipRule="evenodd"

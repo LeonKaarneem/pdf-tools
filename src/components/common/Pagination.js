@@ -20,12 +20,14 @@ const PaginationStart = ({amountOfPagesToShow, currentPage, goToPage, totalPages
         if (pageNumber < 1) {
             continue;
         }
-        pagesToShow.push(<div key={i + '-previous'} className={'page-number'} onClick={() => goToPage(pageNumber)}>{pageNumber}</div>);
+        pagesToShow.push(<div key={i + '-previous'} className={'page-number'}
+                              onClick={() => goToPage(pageNumber)}>{pageNumber}</div>);
     }
     pagesToShow.push(<div className={"current-page"}>{currentPage}</div>);
     for (let i = 0; i < showNumbersAfter; i++) {
         const pageNumber = currentPage + i + 1;
-        pagesToShow.push(<div key={i + '-next'} className={'page-number'} onClick={() => goToPage(pageNumber)}>{pageNumber}</div>);
+        pagesToShow.push(<div key={i + '-next'} className={'page-number'}
+                              onClick={() => goToPage(pageNumber)}>{pageNumber}</div>);
     }
 
     return pagesToShow.map((pageNumber) => pageNumber)
@@ -51,20 +53,23 @@ const Pagination = ({currentPage, totalPages, incrementPage, decrementPage, goTo
             </div>
             {Math.floor(amountOfPagesToShow / 2) + 1 < currentPage &&
                 <div className={"pagination-container"}>
-                <div className={'page-number'} onClick={() => goToPage(1)}>
-                    1
-                </div>
-                <div>
-                ...
-                </div>
+                    <div className={'page-number'} onClick={() => goToPage(1)}>
+                        1
+                    </div>
+                    <div>
+                        ...
+                    </div>
                 </div>
             }
+            <PaginationStart amountOfPagesToShow={amountOfPagesToShow} currentPage={currentPage} goToPage={goToPage}
+                             totalPages={totalPages}/>
+            {
 
-            <PaginationStart amountOfPagesToShow={amountOfPagesToShow} currentPage={currentPage} goToPage={goToPage} totalPages={totalPages}/>
+            }
             <div>
                 ...
             </div>
-            <div onClick={() => goToPage(totalPages)}>
+            <div className={'page-number'} onClick={() => goToPage(totalPages)}>
                 {totalPages}
             </div>
             <div onClick={incrementPage} className={"change-page-button"}>

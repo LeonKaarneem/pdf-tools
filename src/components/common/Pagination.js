@@ -1,5 +1,4 @@
 import './Pagination.css';
-import {hover} from "@testing-library/user-event/dist/hover";
 
 const PaginationStart = ({amountOfPagesToShow, currentPage, goToPage, totalPages}) => {
     const pageSplit = amountOfPagesToShow / 2;
@@ -25,7 +24,7 @@ const PaginationStart = ({amountOfPagesToShow, currentPage, goToPage, totalPages
                               onClick={() => goToPage(pageNumber)}>{pageNumber}</div>);
     }
 
-    pagesToShow.push(<div onMouseEnter={() => console.log('abc')} className={"current-page"}>{currentPage}</div>);
+    pagesToShow.push(<div onMouseEnter={() => console.log('eneter')} onMouseLeave={() => console.log("left")} className={"current-page"}>{currentPage}</div>);
 
 
     for (let i = 0; i < showNumbersAfter; i++) {

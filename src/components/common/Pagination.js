@@ -5,6 +5,7 @@ const PaginationStart = ({amountOfPagesToShow, currentPage, goToPage, totalPages
     if (totalPages > amountOfPagesToShow) {
         pageSplit = amountOfPagesToShow / 2;
     } else {
+        // smaller
         amountOfPagesToShow = totalPages
     }
     const pagesToShow = [];
@@ -59,7 +60,7 @@ const Pagination = ({currentPage, totalPages, incrementPage, decrementPage, goTo
                           fill="white" fillOpacity="0.5"/>
                 </svg>
             </div>
-            {Math.floor(amountOfPagesToShow / 2) + 1 < currentPage &&
+            {(Math.floor(amountOfPagesToShow / 2) + 1 < currentPage && totalPages > amountOfPagesToShow) &&
                 <div className={"pagination-container"}>
                     <div className={'page-number'} onClick={() => goToPage(1)}>
                         1
@@ -72,7 +73,7 @@ const Pagination = ({currentPage, totalPages, incrementPage, decrementPage, goTo
             <PaginationStart amountOfPagesToShow={amountOfPagesToShow} currentPage={currentPage} goToPage={goToPage}
                              totalPages={totalPages}/>
             {
-                Math.floor(amountOfPagesToShow / 2) + currentPage + 1 <= totalPages &&
+                (Math.floor(amountOfPagesToShow / 2) + currentPage + 1 <= totalPages && totalPages > amountOfPagesToShow) &&
                 <div className={"pagination-container"}>
                     <div>
                         ...

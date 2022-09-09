@@ -1,7 +1,12 @@
 import './Pagination.css';
 
 const PaginationStart = ({amountOfPagesToShow, currentPage, goToPage, totalPages}) => {
-    const pageSplit = amountOfPagesToShow / 2;
+    let pageSplit;
+    if (totalPages > amountOfPagesToShow) {
+        pageSplit = amountOfPagesToShow / 2;
+    } else {
+        amountOfPagesToShow = totalPages
+    }
     const pagesToShow = [];
 
     let showNumbersBefore = Math.floor(pageSplit)

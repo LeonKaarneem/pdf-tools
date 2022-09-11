@@ -12,14 +12,14 @@ const PaginationStart = ({amountOfPagesToShow, currentPage, goToPage, totalPages
     let showNumbersBefore = Math.floor(pageSplit)
     let showNumbersAfter = Math.floor(pageSplit)
 
-    if (currentPage <= Math.floor(pageSplit)) {
+    if (currentPage <= Math.floor(pageSplit) && totalPages > amountOfPagesToShow) {
         showNumbersAfter = amountOfPagesToShow - currentPage;
     } else if (currentPage >= totalPages - Math.floor(pageSplit)) {
         const numbersBefore = totalPages - currentPage;
         showNumbersBefore = amountOfPagesToShow - numbersBefore - 1;
         showNumbersAfter = totalPages - currentPage;
     }
-
+    console.log(showNumbersBefore, showNumbersAfter)
     for (let i = 0; i < showNumbersBefore; i++) {
         const pageNumber = currentPage - showNumbersBefore + i;
         if (pageNumber < 1) {

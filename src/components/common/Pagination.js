@@ -5,7 +5,6 @@ const PaginationStart = ({amountOfPagesToShow, currentPage, goToPage, totalPages
     if (totalPages > amountOfPagesToShow) {
         pageSplit = amountOfPagesToShow / 2;
     } else {
-        // smaller
         pageSplit = totalPages
     }
     const pagesToShow = [];
